@@ -66,12 +66,14 @@ public class utils {
     public static XMLGregorianCalendar getXmlGregorianCalendarDate(Date date) throws DatatypeConfigurationException {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         gregorianCalendar.setTime(date);
+
         return getXMLGregorianCalendar(gregorianCalendar);
     }
 
     public static XMLGregorianCalendar getXMLGregorianCalendar(GregorianCalendar gregorianCalendar) throws DatatypeConfigurationException {
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
+        now.setTimezone(0);
         return now;
     }
 
