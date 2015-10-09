@@ -11,6 +11,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.text.ParseException;
 import java.util.*;
 
 import static com.nullpointer.util.utils.getDateFormat;
@@ -31,7 +32,7 @@ public class CurrencyRateServletTest {
 
     @Test(expected = CurrencyRateApiApplicationException.class)
     public void wrongDateTest() throws CurrencyRateApiApplicationException {
-        currencyRateServlet.getCurrencyRate(getParameterMap(USD_CODE, "2015-092i4"));
+        currencyRateServlet.getCurrencyRate(getParameterMap(USD_CODE, "2015-09-2i4"));
     }
 
     @Test(expected = CurrencyRateApiApplicationException.class)
@@ -54,12 +55,11 @@ public class CurrencyRateServletTest {
     }
 
     @Test
-    public void noDateTest() throws CurrencyRateApiApplicationException {
+    public void noDateTest() throws CurrencyRateApiApplicationException, ParseException {
         CurrencyRate usdCurrencyRateForTomorrow = currencyRateServlet.getCurrencyRate(getParameterMap(USD_CODE, null));
         assertEquals(USD_CODE, usdCurrencyRateForTomorrow.code);
 
         Calendar calendar = new GregorianCalendar();
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
         assertEquals(getDateFormat().format(calendar.getTime()), usdCurrencyRateForTomorrow.date);
     }
 
