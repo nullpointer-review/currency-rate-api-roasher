@@ -34,7 +34,7 @@ public class DailyInfo
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/pyurkin/IdeaProjects/currency-rate-api/api/src/main/java/com/nullpointer/client/DailyInfoWebServ.wsdl");
+            url = new URL("http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
