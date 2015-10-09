@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -53,7 +54,11 @@ public class CurrencyRateServlet {
             } else {
                 Date parsedDate = null;
                 try {
-                    parsedDate = getDateFormat().parse(date);
+                    ParsePosition position = new ParsePosition(0);
+                    parsedDate = getDateFormat().parse(date, position);
+                    if(position.getIndex() < date.length()) {
+                        throw new ParseException(date, position.getIndex());
+                    }
                     return getXmlGregorianCalendarDate(parsedDate);
                 } catch (ParseException e) {
                     e.printStackTrace();
