@@ -11,7 +11,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.util.Calendar;
+import java.util.*;
 
 import static com.nullpointer.util.utils.getDateFormat;
 import static junit.framework.Assert.assertEquals;
@@ -31,19 +31,19 @@ public class CurrencyRateServletTest {
 
     @Test(expected = CurrencyRateApiApplicationException.class)
     public void wrongDateTest() throws CurrencyRateApiApplicationException {
-        currencyRateServlet.getCurrencyRate(USD_CODE, "2015-092i4");
+        currencyRateServlet.getCurrencyRate(getParameterMap(USD_CODE, "2015-092i4"));
     }
 
     @Test(expected = CurrencyRateApiApplicationException.class)
     public void wrongCurrencyCodeTest() throws CurrencyRateApiApplicationException {
-        currencyRateServlet.getCurrencyRate(USD_CODE + "!", "2015-09-24");
+        currencyRateServlet.getCurrencyRate(getParameterMap(USD_CODE + "!", "2015-09-24"));
     }
 
     // Straight from the task
 
     @Test
     public void certainDateTest() throws CurrencyRateApiApplicationException {
-        CurrencyRate usdCurrencyRate = currencyRateServlet.getCurrencyRate(USD_CODE, "2015-09-24");
+        CurrencyRate usdCurrencyRate = currencyRateServlet.getCurrencyRate(getParameterMap(USD_CODE, "2015-09-24"));
         assertEquals(USD_CODE, usdCurrencyRate.code);
         assertEquals("66.0410", usdCurrencyRate.rate);
         Calendar calendar = Calendar.getInstance();
@@ -55,9 +55,20 @@ public class CurrencyRateServletTest {
 
     @Test
     public void noDateTest() throws CurrencyRateApiApplicationException {
-        Calendar calendar = Calendar.getInstance();
+        CurrencyRate usdCurrencyRateForTomorrow = currencyRateServlet.getCurrencyRate(getParameterMap(USD_CODE, null));
+        assertEquals(USD_CODE, usdCurrencyRateForTomorrow.code);
+
+        Calendar calendar = new GregorianCalendar();
         calendar.add(Calendar.DAY_OF_MONTH, 1);
-        CurrencyRate usdCurrencyRateForToday = currencyRateServlet.getCurrencyRate(USD_CODE, getDateFormat().format(calendar.getTime()));
-        assertEquals(USD_CODE, usdCurrencyRateForToday.code);
+        assertEquals(getDateFormat().format(calendar.getTime()), usdCurrencyRateForTomorrow.date);
+    }
+
+    private Map<String,String> getParameterMap(String code, String date) {
+        Map<String,String> parametersMap = new HashMap<>();
+        parametersMap.put("code", code);
+        if (date != null) {
+            parametersMap.put("date", date);
+        }
+        return parametersMap;
     }
 }
