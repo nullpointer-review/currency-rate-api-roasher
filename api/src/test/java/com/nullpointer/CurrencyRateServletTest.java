@@ -1,7 +1,7 @@
 package com.nullpointer;
 
 import com.nullpointer.controller.CurrencyRateApiApplication;
-import com.nullpointer.controller.CurrencyRateServlet;
+import com.nullpointer.servlet.CurrencyRateServlet;
 import com.nullpointer.exception.CurrencyRateApiApplicationException;
 import com.nullpointer.model.CurrencyRate;
 import org.junit.Test;

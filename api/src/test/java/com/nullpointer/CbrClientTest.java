@@ -1,7 +1,7 @@
 package com.nullpointer;
 
 import com.nullpointer.client.generated.GetCursOnDateXMLResponse;
-import com.nullpointer.controller.CbrClient;
+import com.nullpointer.client.CbrClient;
 import com.nullpointer.controller.CurrencyRateApiApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;

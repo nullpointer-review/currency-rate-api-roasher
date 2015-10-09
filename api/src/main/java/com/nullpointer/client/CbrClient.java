@@ -1,4 +1,4 @@
-package com.nullpointer.controller;
+package com.nullpointer.client;
 
 import com.nullpointer.client.generated.DailyInfo;
 import com.nullpointer.client.generated.DailyInfoSoap;

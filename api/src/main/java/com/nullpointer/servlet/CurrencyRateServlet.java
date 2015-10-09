@@ -1,5 +1,6 @@
-package com.nullpointer.controller;
+package com.nullpointer.servlet;
 
+import com.nullpointer.client.CbrClient;
 import com.nullpointer.client.generated.GetCursOnDateXMLResponse;
 import com.nullpointer.exception.CurrencyRateApiApplicationException;
 import com.nullpointer.model.CurrencyRate;
