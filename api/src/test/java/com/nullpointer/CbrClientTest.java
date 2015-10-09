@@ -13,8 +13,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import java.util.GregorianCalendar;
 
-import static com.nullpointer.util.utils.getNow;
 import static com.nullpointer.util.utils.getXMLGregorianCalendar;
 import static org.junit.Assert.assertNotNull;
 
@@ -31,7 +31,7 @@ public class CbrClientTest {
 
     @Test
     public void responseNotNullTest() throws DatatypeConfigurationException {
-        XMLGregorianCalendar xmlGregorianCalendarNow = getXMLGregorianCalendar(getNow());
+        XMLGregorianCalendar xmlGregorianCalendarNow = getXMLGregorianCalendar(new GregorianCalendar());
         GetCursOnDateXMLResponse.GetCursOnDateXMLResult cursOnDateXML = cbrClient.getCursOnDateInfoFromCbr(xmlGregorianCalendarNow);
         assertNotNull(cursOnDateXML);
     }

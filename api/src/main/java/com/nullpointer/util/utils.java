@@ -15,10 +15,7 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by pyurkin on 10/8/2015.
@@ -75,10 +72,6 @@ public class utils {
         XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
         now.setTimezone(0);
         return now;
-    }
-
-    public static GregorianCalendar getNow() {
-        return new GregorianCalendar();
     }
 
     public static DateFormat getDateFormat() {
