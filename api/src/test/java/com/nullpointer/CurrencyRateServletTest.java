@@ -11,11 +11,9 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
-import static com.nullpointer.util.Utils.getDateFormat;
+import static com.nullpointer.util.utils.getDateFormat;
 import static junit.framework.Assert.assertEquals;
 
 /**

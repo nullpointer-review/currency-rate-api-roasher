@@ -14,8 +14,8 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
-import static com.nullpointer.util.Utils.getNow;
-import static com.nullpointer.util.Utils.getXMLGregorianCalendar;
+import static com.nullpointer.util.utils.getNow;
+import static com.nullpointer.util.utils.getXMLGregorianCalendar;
 import static org.junit.Assert.assertNotNull;
 
 /**

@@ -6,18 +6,15 @@ import com.nullpointer.model.CurrencyRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.text.DateFormatter;
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.nullpointer.util.Utils.fetchCurrencyRate;
-import static com.nullpointer.util.Utils.getDateFormat;
-import static com.nullpointer.util.Utils.getXmlGregorianCalendarDate;
+import static com.nullpointer.util.utils.fetchCurrencyRate;
+import static com.nullpointer.util.utils.getDateFormat;
+import static com.nullpointer.util.utils.getXmlGregorianCalendarDate;
 
 /**
  * Created by night wish on 06.10.2015.
